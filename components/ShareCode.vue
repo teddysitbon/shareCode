@@ -28,8 +28,10 @@
   </div>
 </template>
 <script>
-import CopyClipboard from '~/components/CopyClipboard.vue';
 import Button from '~/components/Button.vue';
+import CopyClipboard from '~/components/CopyClipboard.vue';
+import { LOCALE } from '~/constants/locale.js';
+import { TWITTER_SHARE_LINK } from '~/constants/';
 export default {
     components : {
         Button,
@@ -47,7 +49,9 @@ export default {
     },
     methods : {
         shareTweet() {
-            console.log('shareTweet');
+            const PARAMS = encodeURIComponent(LOCALE.TWITTER.SHARE + this.code);
+            const LINK = TWITTER_SHARE_LINK + PARAMS;
+            window.open(LINK, '_blank');
         },
         shareOnFacebook() {
             console.log('Share on Facebook ', this.code);
