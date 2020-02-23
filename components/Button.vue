@@ -58,6 +58,7 @@ export default {
 
 </script>
 <style lang="scss">
+@import "~/scss/variables.scss";
 .button{
     display: inline-flex;
     border:0px;
@@ -82,20 +83,20 @@ export default {
         margin-left: 8px;
     }
     &-blue{
-        background: #0042da;
-        color: white;
+        background: $blue;
+        color: $white;
     }
     &-blueLight{
-        background: #edf5fe;
-        color: #0042da;
+        background: $blueLight;
+        color: $blue;
     }
     &-white{
-        background: white;
-        color: #0042da;
+        background: $white;
+        color: $blue;
     }
     &-grey{
-        background: #bdbfc3;
-        color: white;
+        background: $grey;
+        color: $white;
     }
     &-icon{
         padding-right: 16px;

@@ -7,7 +7,6 @@
     <div class="share-code">
       <CopyClipboard
         :code="code"
-        text="Copy Code"
       />
       <div class="share-social">
         <Button
@@ -80,24 +79,6 @@ export default {
         justify-content: flex-end;
         flex: 1 1 0%;
     }
-}
-.code-input{
-    margin:0;
-    border:0;
-    white-space:normal;
-    background:none;
-    line-height:1;
-    font-weight: 500;
-    flex-direction: row;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    background-color: #edf5fe;
-    color: #0042da;
-    padding-left: 24px;
-    width: 300px;
-    height: 48px;
-    font-size: 16px;
 }
 @media (max-width: 768px){
     .share {

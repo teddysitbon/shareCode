@@ -6,7 +6,16 @@
       type="text"
       :value="code"
     >
-    <button class="code-button">
+    <input
+      id="codeCopy"
+      class="code--hide"
+      type="hidden"
+      :value="code"
+    >
+    <button
+      :class="classObject"
+      @click.stop.prevent="copyCode"
+    >
       <img
         class="button-img"
         src="~assets/copy-icon.svg"
@@ -21,16 +30,40 @@ export default {
         code : {
             type     : String,
             required : true
-        },
-        text : {
-            type    : String,
-            default : ''
+        }
+    },
+    data() {
+        return {
+            copiedAnimation : false,
+            text            : 'Copy code'
+        };
+    },
+    computed : {
+        classObject() {
+            return [
+                {
+                    'code-button--active' : this.copiedAnimation === true
+                },
+                'code-button'
+            ];
+        }
+    },
+    methods : {
+        copyCode() {
+            const codeToCopy = document.querySelector('#codeCopy');
+            codeToCopy.setAttribute('type', 'text');
+            codeToCopy.select();
+            document.execCommand('copy');
+            codeToCopy.setAttribute('type', 'hidden');
+            this.text = 'Copied !';
+            this.copiedAnimation = true;
         }
     }
 };
 
 </script>
 <style lang="scss">
+@import "~/scss/variables.scss";
 .code{
     display: inline-flex;
     &-input{
@@ -44,8 +77,8 @@ export default {
         display: flex;
         -webkit-box-align: center;
         align-items: center;
-        background-color: #edf5fe;
-        color: #0042da;
+        background-color: $blueLight;
+        color: $blue;
         padding-left: 24px;
         width: 300px;
         height: 48px;
@@ -53,9 +86,9 @@ export default {
         cursor: text;
     }
     &-button{
-        background: #0042da;
+        background: $blue;
         border: 0px;
-        color: white;
+        color: $white;
         font-size: 16px;
         padding: 0 24px;
         display: flex;
@@ -66,16 +99,48 @@ export default {
         border-top-right-radius: 4px;
         border-bottom-right-radius: 4px;
         outline: none;
+        cursor: copy;
+        transition: 0.6s;
         &:hover,
         &:focus,
         &:active{
             opacity: 0.8;
         }
+        &--active{
+            background-color: $grey;
+            cursor: default;
+        }
+    }
+    &--hide{
+        position: absolute;
+        top: -999px;
+        left: -999px;
+        opacity: 0;
+        z-index: -1;
     }
 }
 .button-img{
-    padding-right: 16px;
+    margin-right: 16px;
 }
+/*
+@keyframes test {
+  50% {
+    width: 18px;
+    height: 18px;
+    margin-right: 14px;
+  }
+  100% {
+    width: 16px;
+    height: 16px;
+    margin-right: 16px;
+  }
+}
+@keyframes toust {
+  100% {
+    background-color:
+  }
+}
+*/
 @media (max-width: 768px){
     .code {
         display: flex;

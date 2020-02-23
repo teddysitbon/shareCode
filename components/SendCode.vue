@@ -58,6 +58,7 @@ export default {
 
 </script>
 <style lang="scss">
+@import "~/scss/variables.scss";
 .send{
     margin-left: 62px;
     margin-bottom: 20px;
@@ -66,7 +67,7 @@ export default {
     }
     &-field{
         width : 100%;
-        border: 1px solid #dddddd;
+        border: 1px solid $greyLight;
         border-radius: 4px;
         min-height: 128px;
         padding: 12px 24px;

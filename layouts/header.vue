@@ -25,6 +25,7 @@
 </template>
 
 <style lang="scss">
+@import "~/scss/variables.scss";
 html {
   font-family: 'Avenir','Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -35,7 +36,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  background: white;
+  background: $white;
 }
 *,
 *:before,
@@ -63,7 +64,7 @@ html {
     flex: 1 1 0%;
   }
   &-description {
-    color: #9399ac;
+    color: $greyDark;
     margin-left: 16px;
   }
   &-connexion {
@@ -77,12 +78,12 @@ html {
 }
 
 .logout{
-  color: #0042da;
+  color: $blue;
   margin-right: 24px;
 }
 .account{
   font-weight: 900;
-  color: #0042da;
+  color: $blue;
 }
 @media (max-width: 768px) {
   .header-description{
