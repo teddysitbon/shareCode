@@ -54,4 +54,10 @@ export default {
     display: block;
     width: 100%;
 }
+
+@media (max-width: 792px){
+    .message-text {
+        font-size: 14px;
+    }
+}
 </style>

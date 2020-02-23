@@ -84,6 +84,18 @@ html {
   font-weight: 900;
   color: $blue;
 }
+@media (max-width: 1075px) {
+  .header-container{
+    padding: 0;
+    width: 792px;
+  }
+}
+@media (max-width: 792px) {
+  .header-container{
+    padding: 0;
+    width: 768px;
+  }
+}
 @media (max-width: 768px) {
   .header-description{
     display: none;

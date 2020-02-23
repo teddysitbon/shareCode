@@ -109,4 +109,9 @@ export default {
         padding-right: 16px;
     }
 }
+@media (max-width: 792px){
+    .button {
+        font-size: 14px;
+    }
+}
 </style>

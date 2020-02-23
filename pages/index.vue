@@ -33,9 +33,16 @@ export default {
     max-width: 792px;
     padding-top: 48px;
 }
+
+@media (max-width: 792px) {
+    .container{
+        width: 768px;
+    }
+}
 @media (max-width: 768px){
     .container {
         padding: 30px 16px 0;
+        width: 100%
     }
 }
 </style>

@@ -119,48 +119,22 @@ export default {
 .button-img{
     margin-right: 16px;
 }
-/*
-@keyframes test {
-  50% {
-    width: 18px;
-    height: 18px;
-    margin-right: 14px;
-  }
-  100% {
-    width: 16px;
-    height: 16px;
-    margin-right: 16px;
-  }
-}
-@keyframes toust {
-  100% {
-    background-color:
-  }
-}
-*/
-@media (max-width: 768px){
+
+@media (max-width: 792px){
     .code {
         display: flex;
         margin-bottom: 5px;
-        .code-input{
+        &-input{
             flex: 1;
+            padding-left: 14px;
+            width: 200px;
+            height: 40px;
+            font-size: 12px;
+        }
+        &-button{
+            font-size: 14px;
+            padding: 0 16px;
         }
     }
-    /*
-    .code .code-input{
-        flex: 1;
-    }
-    .code .code-input{
-        padding-left: 14px;
-        width: 200px;
-        height: 40px;
-        font-size: 14px;
-    }
-    .code .code-button{
-        font-size: 14px;
-        padding: 0 16px;
-        width: 143px;
-    }
-    */
 }
 </style>

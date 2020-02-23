@@ -122,7 +122,7 @@ export default {
 .button-send{
     min-width: 185px;
 }
-@media (max-width: 768px){
+@media (max-width: 792px){
     .send {
         margin-left: 0px;
     }

@@ -5,7 +5,9 @@
       v-html="description"
     />
     <div class="share-code">
-      <CopyClipboard />
+      <CopyClipboard
+        :code="this.$store.state.code"
+      />
       <div class="share-social">
         <Button
           icon="twitter-icon.svg"
@@ -79,11 +81,54 @@ export default {
         flex: 1 1 0%;
     }
 }
-@media (max-width: 768px){
+/*
+@media (max-width: 1075px) {
+  .header-container{
+    padding: 0;
+    width: 792px;
+  }
+}
+@media (max-width: 792px) {
+  .header-container{
+    padding: 0;
+    width: 768px;
+  }
+}
+@media (max-width: 768px) {
+  .header-description{
+    display: none;
+  }
+  .header-container{
+    padding: 0 16px;
+    width: 100%;
+  }
+  .logout{
+    margin-right: 12px;
+  }
+}
+*/
+@media (max-width: 792px){
     .share {
         margin-left: 0;
+        margin-bottom : 25px;
+        &-description{
+            margin-bottom: 5px;
+        }
         &-code {
             display: block;
+        }
+        &-social {
+          display: flex;
+          justify-content: flex-start;
+          .button{
+            width: 49%;
+            margin-left: 0px;
+            height: 40px;
+            font-size: 12px;
+          }
+          .button:first-child{
+              margin-right: 2%;
+          }
         }
     }
 }
