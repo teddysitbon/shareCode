@@ -20,13 +20,13 @@
 <script>
 export default {
     props : {
-        src : {
-            type    : String,
-            default : 'emma-photo'
-        },
         name : {
             type    : String,
             default : 'Emma'
+        },
+        src : {
+            type    : String,
+            default : 'emma-photo'
         },
         text : {
             type    : String,

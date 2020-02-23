@@ -21,7 +21,7 @@
       <div class="send-done">
         <Button
           class-name="button-done"
-          text="Done"
+          :text="done"
           type="blueLight"
           @handleClick="doneEmail"
         />
@@ -31,8 +31,8 @@
 </template>
 <script>
 import Button from '~/components/Button.vue';
+import { LOCALE } from '~/constants/locale.js';
 import { validateEmail } from '~/helpers/email.js';
-
 export default {
     components : {
         Button
@@ -61,6 +61,12 @@ export default {
             });
         }
     },
+    created() {
+        this.done = LOCALE.BUTTON.DONE;
+        this.send = LOCALE.BUTTON.SEND;
+        this.email = LOCALE.BUTTON.EMAIL;
+        this.emails = LOCALE.BUTTON.EMAILS;
+    },
     methods : {
         doneEmail() {
             console.log('Done');
@@ -68,11 +74,11 @@ export default {
         getTextBtn() {
             switch (this.nbMails) {
             case 0 :
-                return 'Send 0 email';
+                return `${this.send} 0 ${this.email}`;
             case 1 :
-                return 'Send 1 email';
+                return `${this.send} 1 ${this.email}`;
             default:
-                return `Send ${this.nbMails} emails`;
+                return `${this.send} ${this.nbMails} ${this.emails}`;
             }
         },
         sendEmail() {
@@ -89,7 +95,6 @@ export default {
         }
     }
 };
-
 </script>
 <style lang="scss">
 @import "~/scss/variables.scss";

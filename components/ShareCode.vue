@@ -11,14 +11,14 @@
       <div class="share-social">
         <Button
           icon="twitter-icon.svg"
-          text="Tweet"
+          :text="shareTwitter"
           text-indent
           type="blue"
           @handleClick="shareTweet"
         />
         <Button
           icon="facebook-icon.png"
-          text="Share"
+          :text="shareFacebook"
           text-indent
           type="blue"
           @handleClick="shareOnFacebook"
@@ -42,6 +42,10 @@ export default {
             type    : String,
             default : ''
         }
+    },
+    created() {
+        this.shareFacebook = LOCALE.BUTTON.FACEBOOK;
+        this.shareTwitter = LOCALE.BUTTON.TWITTER;
     },
     methods : {
         shareOnFacebook() {
@@ -81,32 +85,6 @@ export default {
         flex: 1 1 0%;
     }
 }
-/*
-@media (max-width: 1075px) {
-  .header-container{
-    padding: 0;
-    width: 792px;
-  }
-}
-@media (max-width: 792px) {
-  .header-container{
-    padding: 0;
-    width: 768px;
-  }
-}
-@media (max-width: 768px) {
-  .header-description{
-    display: none;
-  }
-  .header-container{
-    padding: 0 16px;
-    width: 100%;
-  }
-  .logout{
-    margin-right: 12px;
-  }
-}
-*/
 @media (max-width: 792px){
     .share {
         margin-left: 0;

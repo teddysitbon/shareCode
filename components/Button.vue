@@ -60,7 +60,6 @@ export default {
         }
     }
 };
-
 </script>
 <style lang="scss">
 @import "~/scss/variables.scss";
@@ -85,7 +84,6 @@ export default {
     &:active{
         opacity: 0.8;
     }
-
     &-left{
         margin-left: 8px;
     }

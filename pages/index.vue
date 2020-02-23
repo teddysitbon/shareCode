@@ -1,15 +1,15 @@
 <template>
   <div class="container">
     <Message
-      src="emma-photo"
       name="Emma"
-      text="Don’t forget that for each new subscriber you refer, both you and them get <b>one free month</b> of coverage! 💙"
+      src="emma-photo"
+      :text="message"
     />
     <ShareCode
-      description="Share your <b>one free month</b> referral code"
+      :description="shareMessage"
     />
     <SendCode
-      description="You can also send <b>one free month</b> via email, separate emails with semicolon « ; »"
+      :description="sendMessage"
     />
   </div>
 </template>
@@ -17,12 +17,18 @@
 import Message from '~/components/Message.vue';
 import SendCode from '~/components/SendCode.vue';
 import ShareCode from '~/components/ShareCode.vue';
+import { LOCALE } from '~/constants/locale.js';
 export default {
-    layout     : 'header',
+    // layout     : 'header',
     components : {
         Message,
         SendCode,
         ShareCode
+    },
+    created() {
+        this.message = LOCALE.MESSAGE.NEW_SUBSCRIBER;
+        this.sendMessage = LOCALE.MESSAGE.SEND;
+        this.shareMessage = LOCALE.MESSAGE.SHARE;
     }
 };
 </script>
@@ -33,7 +39,6 @@ export default {
     max-width: 792px;
     padding-top: 48px;
 }
-
 @media (max-width: 792px) {
     .container{
         width: 768px;

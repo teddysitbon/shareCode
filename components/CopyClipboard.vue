@@ -4,13 +4,13 @@
       class="code-input"
       disabled
       type="text"
-      :value="getCodeStore"
+      :value="code"
     >
     <input
       id="codeCopy"
       class="code--hide"
       type="hidden"
-      :value="getCodeStore"
+      :value="code"
     >
     <button
       :class="classObject"
@@ -25,11 +25,18 @@
   </div>
 </template>
 <script>
+import { LOCALE } from '~/constants/locale.js';
 export default {
+    props : {
+        code : {
+            type    : String,
+            default : 'emma-photo'
+        }
+    },
     data() {
         return {
             copiedAnimation : false,
-            text            : 'Copy code'
+            text            : LOCALE.BUTTON.COPY
         };
     },
     computed : {
@@ -40,10 +47,10 @@ export default {
                 },
                 'code-button'
             ];
-        },
-        getCodeStore() {
-            return this.$store.state.code;
         }
+    },
+    created() {
+        this.copied = LOCALE.BUTTON.COPIED;
     },
     methods : {
         copyCode() {
@@ -52,12 +59,11 @@ export default {
             codeToCopy.select();
             document.execCommand('copy');
             codeToCopy.setAttribute('type', 'hidden');
-            this.text = 'Copied !';
+            this.text = this.copied;
             this.copiedAnimation = true;
         }
     }
 };
-
 </script>
 <style lang="scss">
 @import "~/scss/variables.scss";
@@ -119,7 +125,6 @@ export default {
 .button-img{
     margin-right: 16px;
 }
-
 @media (max-width: 792px){
     .code {
         display: flex;
