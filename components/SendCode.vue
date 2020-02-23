@@ -5,16 +5,17 @@
       v-html="description"
     />
     <textarea
-      v-model="content"
+      v-model="contentMails"
       class="send-field"
       placeholder="amelie.dupont@gmail.com ; jeanmichel@gmail.com"
     />
     <div class="send-email">
       <Button
         class-name="button-send"
+        :disabled="nbMails === 0 ? true : false"
         icon="send-icon.svg"
-        text="Send 0 email"
-        type="grey"
+        :text="getTextBtn()"
+        :type="nbMails === 0 ? 'grey' : 'blue'"
         @handleClick="sendEmail"
       />
       <div class="send-done">
@@ -30,6 +31,7 @@
 </template>
 <script>
 import Button from '~/components/Button.vue';
+import { validateEmail } from '~/helpers/email.js';
 
 export default {
     components : {
@@ -43,15 +45,47 @@ export default {
     },
     data() {
         return {
-            content : ''
+            contentMails : '',
+            nbMails      : 0
         };
+    },
+    watch : {
+        contentMails(value) {
+            this.nbMails = 0;
+            const CONTENT = value.split(';');
+            CONTENT.map((email) => {
+                const EMAIL_TRIM = email.trim();
+                if (validateEmail(EMAIL_TRIM)) {
+                    this.nbMails++;
+                }
+            });
+        }
     },
     methods : {
         doneEmail() {
             console.log('Done');
         },
+        getTextBtn() {
+            switch (this.nbMails) {
+            case 0 :
+                return 'Send 0 email';
+            case 1 :
+                return 'Send 1 email';
+            default:
+                return `Send ${this.nbMails} emails`;
+            }
+        },
         sendEmail() {
-            console.log('emails');
+            const EMAILS_TO_SEND = [];
+            const CONTENT = this.contentMails.split(';');
+            CONTENT.map((email) => {
+                const EMAIL_TRIM = email.trim();
+                if (validateEmail(EMAIL_TRIM)) {
+                    EMAILS_TO_SEND.push(EMAIL_TRIM);
+                }
+            });
+            console.log('Send email');
+            console.log(EMAILS_TO_SEND);
         }
     }
 };

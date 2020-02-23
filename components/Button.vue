@@ -2,6 +2,7 @@
   <button
     class="button"
     :class="classObject"
+    :disabled="disabled"
     @click="handleClick"
   >
     <img
@@ -18,6 +19,10 @@ export default {
         className : {
             type    : String,
             default : ''
+        },
+        disabled : {
+            type    : Boolean,
+            default : false
         },
         icon : {
             type    : String,
@@ -72,7 +77,9 @@ export default {
     cursor: pointer;
     transition: 0.3s all;
     outline: none;
-
+    &[disabled]{
+        cursor: default;
+    }
     &:hover,
     &:focus,
     &:active{
