@@ -5,9 +5,7 @@
       v-html="description"
     />
     <div class="share-code">
-      <CopyClipboard
-        :code="code"
-      />
+      <CopyClipboard />
       <div class="share-social">
         <Button
           icon="twitter-icon.svg"
@@ -38,23 +36,20 @@ export default {
         CopyClipboard
     },
     props : {
-        code : {
-            type     : String,
-            required : true
-        },
         description : {
             type    : String,
             default : ''
         }
     },
     methods : {
+        shareOnFacebook() {
+            console.log('Share on Facebook');
+        },
         shareTweet() {
-            const PARAMS = encodeURIComponent(LOCALE.TWITTER.SHARE + this.code);
+            const CODE = this.$store.state.code;
+            const PARAMS = encodeURIComponent(LOCALE.TWITTER.SHARE + CODE);
             const LINK = TWITTER_SHARE_LINK + PARAMS;
             window.open(LINK, '_blank');
-        },
-        shareOnFacebook() {
-            console.log('Share on Facebook ', this.code);
         }
     }
 };

@@ -4,13 +4,13 @@
       class="code-input"
       disabled
       type="text"
-      :value="code"
+      :value="getCodeStore"
     >
     <input
       id="codeCopy"
       class="code--hide"
       type="hidden"
-      :value="code"
+      :value="getCodeStore"
     >
     <button
       :class="classObject"
@@ -26,12 +26,6 @@
 </template>
 <script>
 export default {
-    props : {
-        code : {
-            type     : String,
-            required : true
-        }
-    },
     data() {
         return {
             copiedAnimation : false,
@@ -46,6 +40,9 @@ export default {
                 },
                 'code-button'
             ];
+        },
+        getCodeStore() {
+            return this.$store.state.code;
         }
     },
     methods : {

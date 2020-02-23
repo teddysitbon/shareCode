@@ -6,7 +6,6 @@
       text="Don’t forget that for each new subscriber you refer, both you and them get <b>one free month</b> of coverage! 💙"
     />
     <ShareCode
-      code="SHARETHELOVE+5WMXM"
       description="Share your <b>one free month</b> referral code"
     />
     <SendCode
