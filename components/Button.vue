@@ -1,0 +1,104 @@
+<template>
+  <button
+    class="button"
+    :class="classObject"
+    @click="handleClick"
+  >
+    <img
+      v-if="icon !== ''"
+      class="button-icon"
+      :src="require(`@/assets/` + icon )"
+    >
+    {{ text }}
+  </button>
+</template>
+<script>
+export default {
+    props : {
+        className : {
+            type    : String,
+            default : ''
+        },
+        icon : {
+            type    : String,
+            default : ''
+        },
+        text : {
+            type     : String,
+            required : true
+        },
+        textIndent : {
+            type    : Boolean,
+            default : false
+        },
+        type : {
+            type    : String,
+            default : 'blue'
+        }
+    },
+    computed : {
+        classObject() {
+            const buttonColor = `button-${this.type}`;
+            const specificClassName = this.className !== '' ? this.className : '';
+            return [
+                {
+                    'button-left' : this.textIndent === true
+                },
+                buttonColor,
+                specificClassName
+            ];
+        }
+    },
+    methods : {
+        handleClick() {
+            this.$emit('handleClick');
+        }
+    }
+};
+
+</script>
+<style lang="scss">
+.button{
+    display: inline-flex;
+    border:0px;
+    font-weight: 500;
+    height: 48px;
+    align-items: center;
+    padding: 0 26px;
+    vertical-align: top;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s all;
+    outline: none;
+
+    &:hover,
+    &:focus,
+    &:active{
+        opacity: 0.8;
+    }
+
+    &-left{
+        margin-left: 8px;
+    }
+    &-blue{
+        background: #0042da;
+        color: white;
+    }
+    &-blueLight{
+        background: #edf5fe;
+        color: #0042da;
+    }
+    &-white{
+        background: white;
+        color: #0042da;
+    }
+    &-grey{
+        background: #bdbfc3;
+        color: white;
+    }
+    &-icon{
+        padding-right: 16px;
+    }
+}
+</style>

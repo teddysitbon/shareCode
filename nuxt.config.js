@@ -14,7 +14,12 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{
+      rel: 'icon',
+      type: 'image/x-icon',
+      href: '/favicon.ico',
+      href: "//db.onlinewebfonts.com/c/1a045963159927274c92b0444fb83c17?family=Avenir",
+    }]
   },
   /*
    ** Customize the progress-bar color
