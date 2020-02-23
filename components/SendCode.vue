@@ -15,12 +15,14 @@
         icon="send-icon.svg"
         text="Send 0 email"
         type="grey"
+        @handleClick="sendEmail"
       />
       <div class="send-done">
         <Button
           class-name="button-done"
           text="Done"
           type="blueLight"
+          @handleClick="doneEmail"
         />
       </div>
     </div>
@@ -43,6 +45,14 @@ export default {
         return {
             content : ''
         };
+    },
+    methods : {
+        doneEmail() {
+            console.log('Done');
+        },
+        sendEmail() {
+            console.log('emails');
+        }
     }
 };
 
