@@ -51,14 +51,15 @@ export default {
     },
     watch : {
         contentMails(value) {
-            this.nbMails = 0;
+            let nbMails = 0;
             const CONTENT = value.split(';');
             CONTENT.map((email) => {
                 const EMAIL_TRIM = email.trim();
                 if (validateEmail(EMAIL_TRIM)) {
-                    this.nbMails++;
+                    nbMails++;
                 }
             });
+            this.nbMails = nbMails;
         }
     },
     created() {
